@@ -90,7 +90,7 @@ brew bundle --file=- <<EOF
     brew 'chezmoi'
 EOF
 if [ ! -f "$HOME/.config/chezmoi/chezmoi.toml" ]; then
-  chezmoi init --apply --verbose https://github.com/failbit/dotfiles.git
+  chezmoi init --apply https://github.com/failbit/dotfiles.git
   chmod 0600 "$HOME/.config/chezmoi/chezmoi.toml"
 fi
 
