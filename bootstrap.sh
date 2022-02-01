@@ -114,6 +114,6 @@ if [ ! -f "$HOME/.zsh/completion.zsh" ]; then
     cd ~/.zsh && wget https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/lib/completion.zsh
 fi
 
-#yes | /opt/homebrew/opt/fzf/install
+yes | /opt/homebrew/opt/fzf/install
 
 fancy_echo "All done."
