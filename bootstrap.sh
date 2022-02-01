@@ -103,7 +103,6 @@ if [ -f "$HOME/Brewfile.local" ]; then
   fi
 fi
 
-
 if command -v vim >/dev/null 2>&1; then
     cd "$HOME"
     fancy_echo "Bootstraping Vim"
@@ -116,3 +115,5 @@ if [ ! -f "$HOME/.zsh/completion.zsh" ]; then
 fi
 
 yes | /opt/homebrew/opt/fzf/install
+
+fancy_echo "All done."
