@@ -72,8 +72,8 @@ update_homebrew() {
 
 set -e
 
-fancy_echo 'Welcome to the monfresh laptop script!'
-fancy_echo 'You should be and up and running with a working Ruby environment in a few minutes.'
+fancy_echo 'Welcome to the bootstrap process!'
+fancy_echo 'You should be and up and running with a new environment in a few minutes.'
 
 install_or_update_homebrew
 
