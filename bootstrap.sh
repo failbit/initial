@@ -104,9 +104,9 @@ if [ -f "$HOME/Brewfile.local" ]; then
 fi
 
 if command -v vim >/dev/null 2>&1; then
-    cd "$HOME"
-    fancy_echo "Bootstraping Vim"
-    vim '+PlugUpdate' '+PlugClean!' '+PlugUpdate' '+qall'
+   cd "$HOME"
+   fancy_echo "Bootstraping Vim"
+   vim '+PlugUpdate' '+PlugClean!' '+PlugUpdate' '+qall'
 fi
 
 if [ ! -f "$HOME/.zsh/completion.zsh" ]; then
@@ -114,7 +114,7 @@ if [ ! -f "$HOME/.zsh/completion.zsh" ]; then
     cd ~/.zsh && wget https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/lib/completion.zsh
 fi
 
-yes | /opt/homebrew/opt/fzf/install
+/opt/homebrew/opt/fzf/install --completion --key-bindings --update-rc
 /opt/homebrew/bin/broot --install
 
-fancy_echo "All done."
+fancy_echo "🍺 All done."
