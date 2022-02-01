@@ -115,5 +115,6 @@ if [ ! -f "$HOME/.zsh/completion.zsh" ]; then
 fi
 
 yes | /opt/homebrew/opt/fzf/install
+/opt/homebrew/bin/broot --install
 
 fancy_echo "All done."
