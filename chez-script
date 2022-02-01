@@ -6,15 +6,6 @@ fancy_echo() {
   printf "\\n$fmt\\n" "$@"
 }
 
-append_to_file() {
-  local file="$1"
-  local text="$2"
-
-  if ! grep -qs "^$text$" "$file"; then
-    printf "\\n%s\\n" "$text" >> "$file"
-  fi
-}
-
 apple_m1() {
   sysctl -n machdep.cpu.brand_string | grep "Apple M1"
 }
@@ -115,7 +106,7 @@ fi
 
 if command -v vim >/dev/null 2>&1; then
     cd "$HOME"
-    echo "Bootstraping Vim"
+    fancy_echo "Bootstraping Vim"
     vim '+PlugUpdate' '+PlugClean!' '+PlugUpdate' '+qall'
 fi
 
