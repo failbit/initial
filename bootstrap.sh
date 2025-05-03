@@ -6,24 +6,12 @@ fancy_echo() {
   printf "\\n$fmt\\n" "$@"
 }
 
-apple_m1() {
-  sysctl -n machdep.cpu.brand_string | grep "Apple M1"
-}
-
-rosetta() {
-  uname -m | grep "x86_64"
-}
-
-homebrew_installed_on_m1() {
-  apple_m1 && ! rosetta && [ -d "/opt/homebrew" ]
-}
-
-homebrew_installed_on_intel() {
-  ! apple_m1 && command -v brew >/dev/null
+homebrew_installed() {
+  [ -d "/opt/homebrew" ]
 }
 
 install_or_update_homebrew() {
-  if homebrew_installed_on_m1 || homebrew_installed_on_intel; then
+  if homebrew_installed; then
     update_homebrew
   else
     install_homebrew
@@ -89,6 +77,7 @@ fancy_echo "Installing chezmoi and applying dotfiles ..."
 brew bundle --file=- <<EOF
     brew 'chezmoi'
 EOF
+
 if [ ! -f "$HOME/.config/chezmoi/chezmoi.toml" ]; then
   chezmoi init --apply https://github.com/failbit/dotfiles.git
   chmod 0600 "$HOME/.config/chezmoi/chezmoi.toml"
@@ -103,18 +92,18 @@ if [ -f "$HOME/Brewfile.local" ]; then
   fi
 fi
 
-if command -v vim >/dev/null 2>&1; then
-   cd "$HOME"
-   fancy_echo "Bootstraping Vim"
-   vim '+PlugUpdate' '+PlugClean!' '+PlugUpdate' '+qall'
-fi
+# if command -v vim >/dev/null 2>&1; then
+#    cd "$HOME"
+#    fancy_echo "Bootstraping Vim"
+#    vim '+PlugUpdate' '+PlugClean!' '+PlugUpdate' '+qall'
+# fi
 
-if [ ! -f "$HOME/.zsh/completion.zsh" ]; then
-    cd ~/.zsh && wget https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/lib/key-bindings.zsh
-    cd ~/.zsh && wget https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/lib/completion.zsh
-fi
+# if [ ! -f "$HOME/.zsh/completion.zsh" ]; then
+#     cd ~/.zsh && wget https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/lib/key-bindings.zsh
+#     cd ~/.zsh && wget https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/lib/completion.zsh
+# fi
 
-/opt/homebrew/opt/fzf/install --completion --key-bindings --update-rc
-/opt/homebrew/bin/broot --install
+# /opt/homebrew/opt/fzf/install --completion --key-bindings --update-rc
+# /opt/homebrew/bin/broot --install
 
 fancy_echo "🍺 All done."
