@@ -83,6 +83,11 @@ if [ ! -f "$HOME/.config/chezmoi/chezmoi.toml" ]; then
   chmod 0600 "$HOME/.config/chezmoi/chezmoi.toml"
 fi
 
+if [ -f "$HOME/.config/chezmoi/chezmoi.toml" ]; then
+  chezmoi update --apply https://github.com/failbit/dotfiles.git --ssh
+  chmod 0600 "$HOME/.config/chezmoi/chezmoi.toml"
+fi
+
 if [ -f "$HOME/Brewfile.local" ]; then
   fancy_echo "Installing tools and apps from Brewfile.local ..."
   if brew bundle --file="$HOME/Brewfile.local"; then
