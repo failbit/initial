@@ -84,7 +84,7 @@ if [ ! -f "$HOME/.config/chezmoi/chezmoi.toml" ]; then
 fi
 
 if [ -f "$HOME/.config/chezmoi/chezmoi.toml" ]; then
-  chezmoi update --apply https://github.com/failbit/dotfiles.git --ssh
+  chezmoi update
   chmod 0600 "$HOME/.config/chezmoi/chezmoi.toml"
 fi
 
