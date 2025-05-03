@@ -79,7 +79,7 @@ brew bundle --file=- <<EOF
 EOF
 
 if [ ! -f "$HOME/.config/chezmoi/chezmoi.toml" ]; then
-  chezmoi init --apply https://github.com/failbit/dotfiles.git
+  chezmoi init --apply https://github.com/failbit/dotfiles.git --ssh
   chmod 0600 "$HOME/.config/chezmoi/chezmoi.toml"
 fi
 
@@ -91,6 +91,8 @@ if [ -f "$HOME/Brewfile.local" ]; then
     fancy_echo "Some items in Brewfile.local were not installed successfully."
   fi
 fi
+
+starship preset catppuccin-powerline -o ~/.config/starship.toml
 
 # if command -v vim >/dev/null 2>&1; then
 #    cd "$HOME"
