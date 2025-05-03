@@ -110,7 +110,7 @@ starship preset catppuccin-powerline -o ~/.config/starship.toml
 #     cd ~/.zsh && wget https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/lib/completion.zsh
 # fi
 
-# /opt/homebrew/opt/fzf/install --completion --key-bindings --update-rc
-# /opt/homebrew/bin/broot --install
+/opt/homebrew/opt/fzf/install --completion --key-bindings --update-rc
+/opt/homebrew/bin/broot --install
 
 fancy_echo "🍺 All done."
